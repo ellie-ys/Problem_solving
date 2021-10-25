@@ -24,7 +24,7 @@ for i in range(A):
     # print(a)
     for i in a[1]:
         print(i * int(a[0]), end = '')
-    print()
+    print() #줄바꿈
 
         # print(a[1]*i)
     # print(str(a[1])*int(a[0]))
