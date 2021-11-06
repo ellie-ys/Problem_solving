@@ -1,4 +1,4 @@
-#폴짝폴짝 ~ 말도안되게 재미있는 문제.
+#폴짝폴짝 ~ ㅎ.
 # 문제
 # 개구리가 일렬로 놓여 있는 징검다리 사이를 폴짝폴짝 뛰어다니고 있다. 징검다리에는 숫자가 각각 쓰여 있는데, 이 개구리는 매우 특이한 개구리여서 어떤 징검다리에서 점프를 할 때는 그 징검다리에 쓰여 있는 수의 배수만큼 떨어져 있는 곳으로만 갈 수 있다.
 
@@ -24,10 +24,10 @@ def BFS(start, end):
             print(cnt)
             break
 
-        def frog(i):
+        def frog(i,j):
             while True:
-                next = now + stone_bridge[now]*i
-                i += 1
+                next = now + stone_bridge[now]*i*j
+                j += 1
 
                 if 0<next and next <= n:
                     if not checked[next]:
@@ -37,13 +37,11 @@ def BFS(start, end):
                     break
 
 
-
-        if temp[0]< temp[1]:
-
-            frog(1)
+        if temp[0] < temp[1]:
+            frog(1,1)
 
         else:
-            frog(-1)
+            frog(-1,1)
     else:
         print(-1)
 
@@ -53,10 +51,10 @@ n = int(input())
 checked = [False]*(n+1)
 stone_bridge = [0]
 
-temp = list(map(int, input().rstrip().split()))
+temp = list(map(int, input().split()))
 for t in temp:
     stone_bridge.append(t)
-start, end = map(int, input().rstrip().split())
+start, end = map(int, input().split())
 
 BFS(start, end)
 
