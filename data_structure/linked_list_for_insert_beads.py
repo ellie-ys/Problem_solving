@@ -1,65 +1,16 @@
 '''
-배열로 구슬넣는 파이프를 구현해보기 -  배열
+배열로 구슬넣는 파이프를 구현해보기 - Linked List
 이 파이프를 갖는 ADT(추상적 자료형)은 구현방법을 지정하는 게 아니라서 어떻게 구현하는지는 상관이 없다.
 그래서, 배열과 연결리스트로 구현해보기로 함.
+연결리스트 사용 
 
-아래에서 배열을 이용한 파이프 구현에서
-최악의 경우 시간복잡도(Big O)가 n^2으로 나옴.
 
-효율적인 목적 달성을 위해 특성에 맞는 자료구조를 설계하고 사용해야 한다.
+
 '''
 
 
-class ListPipe:
-
-    def __init__(self) :
-        self.myPipe = []
-        
-
-    def addLeft(self, n) :
-        self.myPipe.insert(0,n) #0번째 위치에 n이라는 것을 넣어주게 된다.
-        
-
-    def addRight(self, n) :
-        self.myPipe.append(n)
-
-    def getBeads(self) :
-        return self.myPipe
-        
-
-def processBeads(myInput) :
-
-    myPipe = ListPipe()
-    for bead, direction in myInput:
-        # 구슬번호와 방향, 넣어준 대로 출력
-        # print(bead, direction)
-        if direction == 0 :
-            #왼쪽
-            myPipe.addLeft(bead)
-        elif direction == 1:
-            #오른쪽
-            myPipe.addRight(bead)
-        else:
-            pass
 
 
-    result = myPipe.getBeads()
-    #구슬의 배치가 result
-
-    return result
-
-
-def main():
-    n = int(input())
-    myList = []
-
-    for _ in range(n) :
-        myList.append([int(v) for v in input().split()])
-
-    print(*processBeads(myList))
-
-if __name__ == "__main__":
-    main()
 
 '''
 문제
