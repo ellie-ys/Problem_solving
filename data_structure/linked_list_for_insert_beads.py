@@ -2,17 +2,96 @@
 배열로 구슬넣는 파이프를 구현해보기 - Linked List
 이 파이프를 갖는 ADT(추상적 자료형)은 구현방법을 지정하는 게 아니라서 어떻게 구현하는지는 상관이 없다.
 그래서, 배열과 연결리스트로 구현해보기로 함.
-연결리스트 사용 
+연결리스트를 이용한 파이프 구현.
 
+'''
+
+class LinkedListElement :
+    def __init__(self, val, ptr) :
+        self.value = val#정수
+        self.myNext = ptr#또다른element객체
+
+class LinkedListPipe:
+    #생성자
+    def __init__(self) :
+        self.start = None
+        self.end = None
+
+
+    def addLeft(self, n) :
+        if self.start == None and self.end ==None:
+            elem = LinkedListElement(n,None)
+
+            self.start = elem
+            self.end = elem
+            
+        else :
+            #self.start 기존값
+            elem = LinkedListElement(n, self.start)
+            #self.start 새로운 값
+            self.start = elem
+
+    def addRight(self, n) :
+        if self.start == None and self.end ==None:
+            elem = LinkedListElement(n,None)
+
+            self.start = elem
+            self.end = elem
+        else :
+            elem = LinkedListElement(n, None)
+
+            self.end.myNext = elem
+            self.end = elem
+            
+    def getBeads(self) :
+        result = []
+        
+        current = self.start
+        
+        while current != None:
+            result.append(current.value)
+            current = current.myNext
+        return result
+
+def processBeads(myInput) :
+    myPipe = LinkedListPipe()
+
+    for bead, direction in myInput:
+        if direction == 0 :
+            #왼쪽
+            myPipe.addLeft(bead)
+        elif direction == 1:
+            #오른쪽
+            myPipe.addRight(bead)
+
+    return myPipe.getBeads()
+
+
+
+def main():
+
+
+    n = int(input())
+    # 입력의 첫 번째 줄에는 구슬의 개수  n (100≤n≤200000)
+    myList = []
+
+    for _ in range(n) :
+        #토끼가 구슬을 넣기        
+        myList.append([int(v) for v in input().split()])
+
+    print(*processBeads(myList))
+
+if __name__ == "__main__":
+    main()
 
 
 '''
 
 
+출력
+최종적으로 구슬이 파이프 속에서 어떻게 배치되어 있는지를 출력한다.
+# 파이썬 내장 라이브러리로 제공되는 자료구조 덱과 큐는 연결 리스트로 구현되어 있다.
 
-
-
-'''
 문제
 구슬 넣기 (배열)
 Elice의 토끼는 암기력을 높이기 위해 구슬 넣기 놀이를 고안했습니다.
