@@ -4,19 +4,11 @@ import sys
 input = sys.stdin.readline
 
 A,B = map(int, input().split())
-min= 1
 
-def yaksu(Num):
-    yak_su = []
-    for i in range(1, Num):
-        if Num % i == 0:
-            yak_su.append(i)
-    return yak_su
-
-
-a = yaksu(A)
-b = yaksu(B)
-result = [x for x in a if x in b]
+def yaksu(a,b):
+    for i in range(min(a,b), 0, -1):
+        if a% i ==0 and b % i ==0:
+            return i
 
 
 def baesu(c,d):
@@ -24,7 +16,7 @@ def baesu(c,d):
         if j % c == 0 and j% d ==0:
             return j
 
-print(max(result))
+print(yaksu(A,B))
 print(baesu(A,B))
 
 
