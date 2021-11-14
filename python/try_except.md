@@ -78,34 +78,56 @@ except ValueError:
     print('잘못된 값을 넣은것 같아요')
 ```
 
+### break 사용
+
+190넘는 친구있으면 반을 출력하고 바로 정지
+1반, 2반(dictonary 순서x) 모두 출력됨.
+break로 첫for문은 종료되는데, 그 상위 for문은 종료되지 않고 한번더 2반을 탐색한다.
+
+```
 students_height = {'1반':[172,185,198,177,165,199], '2반':[165,177,167,180,199]}
 
-# 190넘는 친구있으면 반을 출력하고 바로 정지
 
 for class_number, students in students_height.items():
-for student in students:
-if student >190:
-print(class_number,'에 190을 넘는 학생이 있습니다')
-break
-이러면 1반, 2반(dictonary 순서x) 모두 출력됨.
-
+	for student in students:
+		if student >190:
+			print(class_number,'에 190을 넘는 학생이 있습니다')
+			break
 ```
 
-```
+### raise error
 
+190넘는 친구있으면 반을 출력하고 바로 정지 #중첩된 for문 2개 다 바로 종료 #실행 흐름 깨트릴 때 유용
+
+```
 students_height = {'1반':[172,185,198,177,165,199], '2반':[165,177,167,180,199]}
-
-# 190넘는 친구있으면 반을 출력하고 바로 정지
 
 try:
-for class_number, students in students_height.items():
-for student in students:
-if student >190:
-print(class_number,'에 190을 넘는 학생이 있습니다') #중첩된 for문에서 바로 종료하고 싶을 때.
-raise StopIteration
+	for class_number, students in students_height.items():
+		for student in students:
+			if student >190:
+				print(class_number,'에 190을 넘는 학생이 있습니다')
+				raise StopIteration
 except StopIteration:
-print('정상종료')
+	print('정상종료')
 
 ```
 
+문구점 세곳을 검사하면서 풀이 있으면 문구점의 이름과 가격을 출력, 풀을 파는 가게 발견하면 for문 전체 즉시 종료.
+
+```
+shops = {
+    "송일문방구": {"가위": 500, "크레파스": 3000},
+    "알파문구": {"풀": 800, "도화지": 300, "A4용지": 8000},
+    "다이소": {"풀": 500, "목공본드": 2000, "화분": 3000}
+}
+try:
+	for shop, products in shops.items():
+		for product, price in products.items():
+			if product =='풀':
+				print("{}: {}원".format(shop, price))
+				raise StopIteration
+
+except StopIteration:
+    print('정상 종료')
 ```
