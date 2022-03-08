@@ -28,6 +28,10 @@ if p1 == n :
 if p2== m :
     c = c+a[p1:]
 
-print(c)
+
+
+for x in c:
+    print(x, end = ' ')
+
 
 
