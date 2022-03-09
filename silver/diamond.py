@@ -18,12 +18,14 @@ ave = hei = n//2
 for i in range(n):
     for j in range(ave, hei+1):
         res += a[i][j]
-    if i < n//2:ls
+    if i < n//2:
         ave-=1
         hei+=1
+        print(ave,hei)
     else:
         ave+=1
         hei-=1
+        print(ave,hei)
 
 
 print(res)
