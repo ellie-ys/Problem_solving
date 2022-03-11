@@ -11,7 +11,7 @@ a = list(map(int, input().split()))
 
 # print(n, m, a)
 
-# 9 3
+# 9 9
 # 1 2 3 4 5 6 7 8 9
 def Count(mid):
     sum = 0  
@@ -26,17 +26,19 @@ def Count(mid):
     return cnt
 
         
-lt = 1
+
 maxi = 0
 for x in a:
     maxi += x
+lt = max(a)
+print(lt)
 rt = maxi
-
+print(maxi)
 
 res = 0
-while lt <= rt:    
+while lt <= rt:
     mid = (lt + rt)//2
-    # 최소 m개여야 한다. 
+    # 최소 m개여야 한다.
     if Count(mid) <= m :
         res = mid
         rt = mid -1
