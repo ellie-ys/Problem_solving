@@ -1,4 +1,5 @@
 
+# 결정 알고리즘 - 범위좁혀나가기
 import sys
 
 
@@ -30,7 +31,6 @@ maxi = 0
 for x in a:
     maxi += x
 rt = maxi
-
 
 
 res = 0
