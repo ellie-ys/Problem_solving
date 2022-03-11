@@ -12,18 +12,16 @@ a.sort()
 # index찾는 파이썬 내장함수 사용 
 # print(a.index(m)+1)
 lt = 0
-rt = n
-for _ in range(n):
+rt = n - 1
+while lt <= rt :
     mid = (lt+rt)//2
-
-    if a[mid] > m:
+    if a[mid] == m:
+        print(mid+1)
+        break
+    elif a[mid] > m:
         rt = mid -1
-    elif a[mid] < m:
-        lt = mid + 1 
-    # else:
-    #     mid
-
-print(mid+1)
+    else:
+        lt = mid +1
 
 # 8 32
 # 23 87 65 12 57 32 99 81
