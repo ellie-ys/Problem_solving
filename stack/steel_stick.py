@@ -16,17 +16,15 @@ for i in range(len(s)):
     if s[i] == '(':
         stack.append(s[i])
         # print(stack)
-    else:
+    elif s[i] == ')':
         #closed bracket
+        stack.pop()
         if s[i-1] == '(':
-            # raser
-            stack.pop()
-            # print(stack)
+            # raser 컷팅! 지금까지 스택의 길이를 더해준다.
             sum += len(stack)
             
-        else:
-            stack.pop()
-            # print(stack)
+        elif s[i-1] == ')':
+            # stick 길이기 때문
             sum+=1
             
 
@@ -35,4 +33,4 @@ print(sum)
 
 
 
-#()(((()())(()())))(())
+# ()(((()())(())()))(())
